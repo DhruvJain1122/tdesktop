@@ -400,7 +400,7 @@ void Cover::refreshStatusText() {
 	auto statusText = [&] {
 		auto currentTime = base::unixtime::now();
 		if (auto user = _peer->asUser()) {
-			const auto result = Data::OnlineTextFull(user, currentTime);
+			const auto result = Data::OnlineTextFull(user, currentTime) + "test";
 			const auto showOnline = Data::OnlineTextActive(user, currentTime);
 			const auto updateIn = Data::OnlineChangeTimeout(user, currentTime);
 			if (showOnline) {

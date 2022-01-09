@@ -926,12 +926,20 @@ void MainMenu::refreshMenu() {
 		_menu->addAction(tr::lng_create_group_title(tr::now), [=] {
 			controller->showNewGroup();
 		}, &st::mainMenuNewGroup, &st::mainMenuNewGroupOver);
+
+
+		_menu->addAction(tr::lng_create_secret_chat_title(tr::now), [=] {
+			controller->show(PrepareContactsBox(controller));
+			}, &st::mainMenuSecretChat, &st::mainMenuSecretChatOver);
+
 		_menu->addAction(tr::lng_create_channel_title(tr::now), [=] {
 			controller->showNewChannel();
 		}, &st::mainMenuNewChannel, &st::mainMenuNewChannelOver);
+
 		_menu->addAction(tr::lng_menu_contacts(tr::now), [=] {
 			controller->show(PrepareContactsBox(controller));
 		}, &st::mainMenuContacts, &st::mainMenuContactsOver);
+
 		if (_controller->session().serverConfig().phoneCallsEnabled.current()) {
 			_menu->addAction(tr::lng_menu_calls(tr::now), [=] {
 				ShowCallsBox(controller);

@@ -137,6 +137,8 @@ private:
 	void addToggleUnreadMark();
 	void addToggleArchive();
 	void addClearHistory();
+	void addSelfDestructTimer();
+
 	void addDeleteChat();
 	void addLeaveChat();
 	void addManageChat();
@@ -355,7 +357,7 @@ void Filler::addSupportInfo() {
 }
 
 void Filler::addInfo() {
-	if (_peer->isSelf() || _peer->isRepliesChat()) {
+	if (_peer->isSelf() || _peer->isRepliesChat() || _peer->isSecretChat()) {
 		return;
 	} else if (_controller->adaptive().isThreeColumn()) {
 		if (Core::App().settings().thirdSectionInfoEnabled()
@@ -452,6 +454,16 @@ void Filler::addClearHistory() {
 	}
 	_addAction(
 		tr::lng_profile_clear_history(tr::now),
+		ClearHistoryHandler(_peer),
+		&st::menuIconClear);
+}
+void Filler::addSelfDestructTimer() {
+
+	if (!_peer->isSecretChat()) {
+	
+	}
+	_addAction(
+		tr::lng_context_set_self_destruct_time(tr::now),
 		ClearHistoryHandler(_peer),
 		&st::menuIconClear);
 }
@@ -552,7 +564,7 @@ void Filler::addViewDiscussion() {
 }
 
 void Filler::addExportChat() {
-	if (!_peer->canExportChatHistory()) {
+	if (!_peer->canExportChatHistory() || _peer->isSecretChat()) {
 		return;
 	}
 	const auto peer = _peer;
@@ -707,7 +719,7 @@ void Filler::addCreatePoll() {
 
 void Filler::addThemeEdit() {
 	const auto user = _peer->asUser();
-	if (!user || user->isBot()) {
+	if (!user || user->isBot() || _peer->isSecretChat()) {
 		return;
 	}
 	const auto controller = _controller;
@@ -773,6 +785,7 @@ void Filler::fillProfileActions() {
 	addNewMembers();
 	addManageChat();
 	addViewDiscussion();
+	addSelfDestructTimer();
 	addExportChat();
 	addBlockUser();
 	addReport();

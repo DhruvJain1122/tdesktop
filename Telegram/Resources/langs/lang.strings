@@ -1117,6 +1117,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_create_group_next" = "Next";
 "lng_create_group_create" = "Create";
 "lng_create_group_title" = "New Group";
+"lng_create_secret_chat_title" = "New Secret Chat";
 "lng_create_channel_title" = "New Channel";
 "lng_create_public_channel_title" = "Public Channel";
 "lng_create_public_channel_about" = "Anyone can find the channel in search and join";
@@ -1736,6 +1737,8 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_context_archive_to_menu" = "Move to main menu";
 "lng_context_archive_to_list" = "Move to chats list";
 "lng_context_archive_to_menu_info" = "Archive moved to the main menu!\nYou can return it from the context menu of the archive button.";
+
+"lng_context_set_self_destruct_time" = "Set self-destruct timer";
 
 "lng_context_mute" = "Mute notifications";
 "lng_context_unmute" = "Unmute";

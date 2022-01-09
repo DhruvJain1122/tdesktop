@@ -166,6 +166,10 @@ public:
 	[[nodiscard]] bool isChannel() const {
 		return peerIsChannel(id);
 	}
+	[[nodiscard]] bool isSecretChat() const {
+		return peerIsSecretChat(id);
+	}
+
 	[[nodiscard]] bool isSelf() const;
 	[[nodiscard]] bool isVerified() const;
 	[[nodiscard]] bool isScam() const;
